@@ -7,7 +7,7 @@ Practice implementing CycleGAN in Jupyter Notebook.
 
 [Official implementation](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix)
 
-The image below show the result of model training about 200 epochs, I think it is worse than the result of the original author.
+The image below shows the result of model training about 200 epochs, I think it is worse than the result of the original author.
 
 ![Result](./notebook_images/result.jpg)
 
@@ -24,7 +24,7 @@ The image below show the result of model training about 200 epochs, I think it i
 
 * **Fewer residual blocks.**
 
-    When I was training generators with 9 residual blocks as the original paper mentioned, it would produce images with strange dark hole at about 80 epochs, just like the image below. Seems like the model had been broken. So, in the end I use fewer residual blocks in generators.
+    When I was training the generators with 9 residual blocks as the original paper mentioned, it would produce images with strange dark hole at about 80 epochs, just like the image below. Seems like the model had been broken. So, in the end I use fewer residual blocks in generators.
     
 ![Fail](./notebook_images/fail.png)
 
