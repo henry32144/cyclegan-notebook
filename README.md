@@ -13,7 +13,7 @@ The image below shows the result of model training about 200 epochs, I think it 
 
 ## Notebooks
 
-[Jupyter Notebook](./tf_cycle_gan.ipynb) | [HTML](./tf_cycle_gan.html)
+[Jupyter Notebook](./tf_cycle_gan.ipynb) | [HTML](./index.html)
 
 ### Some Minor Modification
 
