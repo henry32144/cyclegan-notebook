@@ -1,4 +1,4 @@
-Tensorflow CycleGAN Notebook
+CycleGAN Notebook
 =================
 
 Practice implementing CycleGAN in Jupyter Notebook.
@@ -7,26 +7,25 @@ Practice implementing CycleGAN in Jupyter Notebook.
 
 [Official implementation](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix)
 
-The image below shows the result of model training about 200 epochs, I think it is worse than the result of the original author.
+The image below shows the result of tensorflow model trained about 200 epochs, I think it is worse than the result of the original author.
 
 ![Result](./notebook_images/result.jpg)
 
+Below is the result of pytorch model, trained about 135 epochs on horse2zebra.
+
+![PytorchResult](./notebook_images/pytorch_result.jpg)
+
 ## Notebooks
 
-[Jupyter Notebook](./tf_cycle_gan.ipynb) | [HTML](./tf_cycle_gan.html)
+[Tensorflow 2.0 Notebook](./tf_cycle_gan.ipynb)
+
+[Pytorch Notebook](./pytorch_cycle_gan.ipynb)
 
 ### Some Minor Modification
 
 * **Using random number within a range to replace label 0 and 1 while calculating the loss.**
 
     For example, using the random number between 0 to 0.3 while computing the loss of fake images, and 0.7 to 1.2 for real images.This idea is from [ganhacks](https://github.com/soumith/ganhacks). (Not sure whether it would be better for CycleGAN model or not)
-    
-
-* **Fewer residual blocks.**
-
-    When I was training the generators with 9 residual blocks as the original paper mentioned, it would produce images with strange dark hole at about 80 epochs, just like the image below. Seems like the model had been broken. So, in the end I use fewer residual blocks in generators.
-    
-![Fail](./notebook_images/fail.png)
 
 ## Environments
 
@@ -35,6 +34,7 @@ The image below shows the result of model training about 200 epochs, I think it 
 * numpy
 * matplotlib
 * tensorflow 2.0
+* pytorch 1.2.0
 * tqdm
 
 ## Get Started
@@ -89,7 +89,7 @@ Change the `DATASET` variable to the dataset name in the `Hyper Parameters & Set
 
 ### 4. Run the notebook
 
-For `tf_cycle_gan.ipynb`, you can use the following command to check the status while training the model.
+You can use the following command to check the status while training the model.
 
 `
 cd /to/path/of/this/project
@@ -100,9 +100,7 @@ About 400~600 seconds per epoch with a **NVIDIA 1080Ti GPU**.
 
 ## Known Issues
 
-* **Memory leak**: it will generally use more and more RAM while training, currently I have no idea where the problem occur. I avoid OOM by restarted the notebook after several epochs, the checkpoint would be stored every 5 epochs by default, so that is ok.
-
-* **Fail message in console**: While training, the console will appear this message `meta_optimizer.cc:502 layout failed: Invalid argument: Size of values 0 does not match size of permutation 4.`, I don't know where is the error occur, this error message also appear in the [Tensorflow Official CycleGAN Tutorial](https://www.tensorflow.org/tutorials/generative/cyclegan). I guess the problem may be in the training step function.
+* **Fail message in console**: While training the models in tensorflow notebook, the console will appear this message `meta_optimizer.cc:502 layout failed: Invalid argument: Size of values 0 does not match size of permutation 4.`, I don't know where is the error occur, this error message also appear in the [Tensorflow Official CycleGAN Tutorial](https://www.tensorflow.org/tutorials/generative/cyclegan).
 
 ## Acknowledgements
 
@@ -110,5 +108,6 @@ Thanks to:
 
 * [Official implementation](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix)
 * [Tensorflow Official CycleGAN Tutorial](https://www.tensorflow.org/tutorials/generative/cyclegan)
+* [Pytorch DCGAN Tutorial](https://pytorch.org/tutorials/beginner/dcgan_faces_tutorial.html)
 
 I reference some part of implementation from them.
